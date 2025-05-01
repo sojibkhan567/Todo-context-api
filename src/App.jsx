@@ -3,7 +3,7 @@ import { TodoProvider } from "./contexts"
 import { TodoForm, TodoItem } from "./components";
 
 function App() {
-  const [todos, setTodos] = useState([{ id: Date.now(), todo: "Default Todo item", completed: true }]);
+  const [todos, setTodos] = useState([]);
 
   //add todo item
   const addTodo = (todo) => {
