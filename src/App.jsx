@@ -3,7 +3,7 @@ import { TodoProvider } from "./contexts"
 import { TodoForm, TodoItem } from "./components";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([{ id: Date.now(), todo: "Default todo item", completed: false }]);
 
   //add todo item
   const addTodo = (todo) => {
@@ -22,14 +22,14 @@ function App() {
 
   // toggle complete btn
   const toggleComplete = (id) => {
-    setTodos((prev) => prev.map((prevTodo) => prevTodo.id === id ? { ...prevTodo, completed: !prevTodo.completed } : "false"));
+    setTodos((prev) => prev.map((prevTodo) => prevTodo.id === id ? { ...prevTodo, completed: !prevTodo.completed } : prevTodo));
   }
 
   // store todo item in local storage
   useEffect(() => {
     const todos = JSON.parse(localStorage.getItem("todos"));
 
-    if (todos && todos.length) {
+    if (todos && todos.length > 0) {
       setTodos(todos);
     }
   }, []);
@@ -61,7 +61,7 @@ function App() {
           </div>
         </div>
       </div>
-    </TodoProvider>
+    </TodoProvider >
   )
 }
 

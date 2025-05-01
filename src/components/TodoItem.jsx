@@ -14,7 +14,8 @@ function TodoItem({ todo }) {
   }
 
   // toggle complete btn 
-  const toggleCompleteItem = () => {
+  const toggleCompleted = () => {
+    //console.log(todo.id)
     toggleComplete(todo.id);
   }
 
@@ -27,7 +28,7 @@ function TodoItem({ todo }) {
         type="checkbox"
         className="cursor-pointer"
         checked={todo.completed}
-        onChange={toggleCompleteItem}
+        onChange={toggleCompleted}
       />
       <input
         type="text"
